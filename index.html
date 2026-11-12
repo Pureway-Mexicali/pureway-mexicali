@@ -48,6 +48,22 @@
     h1 { font-size: 38px !important; }
     h2 { font-size: 28px !important; }
   }
+  /* PROMO NOVIEMBRE */
+  .promo-bg { position:fixed; inset:0; background:rgba(16,40,63,0.6); display:none; align-items:center; justify-content:center; padding:20px; z-index:1000; }
+  .promo-bg.open { display:flex; }
+  .promo { position:relative; width:100%; max-width:440px; max-height:calc(100vh - 40px); overflow-y:auto; background:#fff; border-radius:22px; padding:30px 26px 24px; text-align:center; box-shadow:0 24px 60px rgba(0,0,0,0.25); }
+  .promo-x { position:absolute; top:10px; right:12px; width:40px; height:40px; border:0; background:transparent; font-size:28px; line-height:1; color:var(--muted); cursor:pointer; border-radius:50%; }
+  .promo-x:focus-visible, .promo-wa:focus-visible { outline:3px solid var(--teal); outline-offset:3px; }
+  .promo h3 { margin:6px 0 4px; font-size:24px; line-height:1.2; font-weight:800; color:var(--navy); }
+  .promo .promo-sub { margin:0 0 18px; font-size:14px; color:var(--muted); }
+  .promo-offer { background:var(--navy); color:#fff; border-radius:16px; padding:20px 18px; display:flex; flex-direction:column; gap:12px; }
+  .promo-offer .k { font-size:13px; font-weight:600; color:#9FD3DD; }
+  .promo-offer .big { font-size:44px; font-weight:800; line-height:1; color:#F2B33D; }
+  .promo-offer .mid { font-size:26px; font-weight:800; line-height:1.1; }
+  .promo-offer .s { font-size:13px; color:#CFE6EB; }
+  .promo-offer .o { font-family:'Lora', Georgia, serif; font-style:italic; color:#6FC4D4; font-size:18px; }
+  .promo-wa { display:block; margin-top:18px; background:#25D366; color:#fff; font-weight:700; font-size:17px; padding:15px 20px; border-radius:999px; }
+  .promo-fine { margin:14px 0 0; font-size:11.5px; line-height:1.45; color:var(--muted); }
 </style>
 </head>
 <body>
@@ -234,6 +250,22 @@
   </div>
 </div>
 
+<!-- PROMO NOVIEMBRE (se oculta sola a partir del 1 de diciembre de 2026) -->
+<div class="promo-bg" id="promo" role="dialog" aria-modal="true" aria-labelledby="promo-title">
+  <div class="promo">
+    <button class="promo-x" id="promo-x" aria-label="Cerrar">&times;</button>
+    <h3 id="promo-title">Buen Fin y Thanksgiving en Pure Way</h3>
+    <p class="promo-sub">Válido del 12 al 30 de noviembre</p>
+    <div class="promo-offer">
+      <div><div class="k">Pago de contado</div><div class="big">$17.50</div><div class="s">por dólar, sin importar el tipo de cambio del día</div></div>
+      <div class="o">o</div>
+      <div><div class="k">Con tarjeta de crédito</div><div class="mid">3 meses sin intereses</div><div class="s">al tipo de cambio del día de tu compra</div></div>
+    </div>
+    <a class="promo-wa" href="https://wa.me/526867907298?text=Hola%2C%20vi%20su%20p%C3%A1gina%20de%20Pure%20Way%20y%20me%20interesa%20la%20promoci%C3%B3n%20de%20noviembre." onclick="oaiq('measure', 'lead_created', { type: 'customer_action' }); gtag('event', 'conversion', { 'send_to': 'AW-18511956073/ngdBCMbZo50dEOmQmPtE', 'value': 500.0, 'currency': 'MXN', 'transport_type': 'beacon' });">Quiero la promoción por WhatsApp</a>
+    <p class="promo-fine">Precios de los sistemas en dólares (USD). El tipo de cambio de $17.50 aplica solo en pago de contado. Meses sin intereses con tarjetas de crédito participantes. La instalación se cotiza en la visita.</p>
+  </div>
+</div>
+
 <script>
 (function(){
   var q = location.search;
@@ -243,6 +275,23 @@
       links[i].href = links[i].href.replace('vi%20su%20p%C3%A1gina', 'vi%20su%20anuncio');
     }
   }
+})();
+</script>
+<script>
+(function(){
+  var fin = new Date('2026-12-01T00:00:00-08:00');
+  if (new Date() >= fin) return;
+  var bg = document.getElementById('promo');
+  try { if (sessionStorage.getItem('promoVista')) return; } catch(e) {}
+  function cerrar(){ bg.classList.remove('open'); }
+  document.getElementById('promo-x').addEventListener('click', cerrar);
+  bg.addEventListener('click', function(e){ if (e.target === bg) cerrar(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') cerrar(); });
+  setTimeout(function(){
+    bg.classList.add('open');
+    document.getElementById('promo-x').focus();
+    try { sessionStorage.setItem('promoVista','1'); } catch(e) {}
+  }, 2500);
 })();
 </script>
 </body>
