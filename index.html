@@ -51,8 +51,9 @@
   /* PROMO NOVIEMBRE */
   .promo-bg { position:fixed; inset:0; background:rgba(16,40,63,0.6); display:none; align-items:center; justify-content:center; padding:20px; z-index:1000; }
   .promo-bg.open { display:flex; }
-  .promo { position:relative; width:100%; max-width:440px; max-height:calc(100vh - 40px); overflow-y:auto; background:#fff; border-radius:22px; padding:30px 26px 24px; text-align:center; box-shadow:0 24px 60px rgba(0,0,0,0.25); }
-  .promo-x { position:absolute; top:10px; right:12px; width:40px; height:40px; border:0; background:transparent; font-size:28px; line-height:1; color:var(--muted); cursor:pointer; border-radius:50%; }
+  .promo { position:relative; width:100%; max-width:440px; max-height:calc(100vh - 40px); overflow-y:auto; background:#fff; border-radius:22px; padding:12px 12px 16px; text-align:center; box-shadow:0 24px 60px rgba(0,0,0,0.25); }
+  .promo-sr { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+  .promo-x { position:absolute; top:18px; right:18px; z-index:2; width:40px; height:40px; border:0; background:rgba(255,255,255,0.92); box-shadow:0 2px 8px rgba(0,0,0,0.2); font-size:28px; line-height:1; color:var(--muted); cursor:pointer; border-radius:50%; }
   .promo-x:focus-visible, .promo-wa:focus-visible { outline:3px solid var(--teal); outline-offset:3px; }
   .promo h3 { margin:6px 0 4px; font-size:24px; line-height:1.2; font-weight:800; color:var(--navy); }
   .promo .promo-sub { margin:0 0 18px; font-size:14px; color:var(--muted); }
@@ -62,7 +63,7 @@
   .promo-offer .mid { font-size:26px; font-weight:800; line-height:1.1; }
   .promo-offer .s { font-size:13px; color:#CFE6EB; }
   .promo-offer .o { font-family:'Lora', Georgia, serif; font-style:italic; color:#6FC4D4; font-size:18px; }
-  .promo-wa { display:block; margin-top:18px; background:#25D366; color:#fff; font-weight:700; font-size:17px; padding:15px 20px; border-radius:999px; }
+  .promo-wa { display:block; margin-top:12px; background:#25D366; color:#fff; font-weight:700; font-size:17px; padding:15px 20px; border-radius:999px; }
   .promo-fine { margin:14px 0 0; font-size:11.5px; line-height:1.45; color:var(--muted); }
 </style>
 </head>
@@ -193,7 +194,7 @@
       </div>
       <div style="background:#16324A; border-radius:16px; padding:30px 24px; display:flex; flex-direction:column; gap:12px;">
         <div style="font-size:18px; font-weight:700; color:#fff;">Cafeterías</div>
-        <div style="font-size:14px; color:#9FC6CE; line-height:1.6;">Cumple el estándar de agua de la Specialty Coffee Association. Protege tu máquina de espresso.</div>
+        <div style="font-size:14px; color:#9FC6CE; line-height:1.6;">Agua sin cloro ni sabores extraños para tu café. Protege tu máquina de espresso.</div>
       </div>
       <div style="background:#16324A; border-radius:16px; padding:30px 24px; display:flex; flex-direction:column; gap:12px;">
         <div style="font-size:18px; font-weight:700; color:#fff;">Agua purificada para todo tu hogar</div>
@@ -254,15 +255,9 @@
 <div class="promo-bg" id="promo" role="dialog" aria-modal="true" aria-labelledby="promo-title">
   <div class="promo">
     <button class="promo-x" id="promo-x" aria-label="Cerrar">&times;</button>
-    <h3 id="promo-title">Buen Fin y Thanksgiving en Pure Way</h3>
-    <p class="promo-sub">Válido del 12 al 30 de noviembre</p>
-    <div class="promo-offer">
-      <div><div class="k">Pago de contado</div><div class="big">$17.50</div><div class="s">por dólar, sin importar el tipo de cambio del día</div></div>
-      <div class="o">o</div>
-      <div><div class="k">Con tarjeta de crédito</div><div class="mid">3 meses sin intereses</div><div class="s">al tipo de cambio del día de tu compra</div></div>
-    </div>
+    <h3 id="promo-title" class="promo-sr">Promoción de noviembre Pure Way: dólar a $17.50 de contado o 3 meses sin intereses</h3>
+    <img src="promo-noviembre.jpg" alt="Promoción Buen Fin y Thanksgiving: de contado, dólar a $17.50; con tarjeta de crédito, 3 meses sin intereses. Válido del 12 al 30 de noviembre." width="900" height="1125" style="width:100%; height:auto; border-radius:14px;">
     <a class="promo-wa" href="https://wa.me/526867907298?text=Hola%2C%20vi%20su%20p%C3%A1gina%20de%20Pure%20Way%20y%20me%20interesa%20la%20promoci%C3%B3n%20de%20noviembre." onclick="oaiq('measure', 'lead_created', { type: 'customer_action' }); gtag('event', 'conversion', { 'send_to': 'AW-18511956073/ngdBCMbZo50dEOmQmPtE', 'value': 500.0, 'currency': 'MXN', 'transport_type': 'beacon' });">Quiero la promoción por WhatsApp</a>
-    <p class="promo-fine">Precios de los sistemas en dólares (USD). El tipo de cambio de $17.50 aplica solo en pago de contado. Meses sin intereses con tarjetas de crédito participantes. La instalación se cotiza en la visita.</p>
   </div>
 </div>
 
